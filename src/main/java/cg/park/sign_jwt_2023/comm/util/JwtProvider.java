@@ -23,7 +23,7 @@ public class JwtProvider {
 
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE) // (1)
-                .setIssuer("admin") // 토큰발급자(iss)
+                .setIssuer("PCG") // 토큰발급자(iss)
                 .setIssuedAt(now) // 발급시간(iat)
                 .setExpiration(expiration) // 만료시간(exp)
                 .setSubject(subject) //  토큰 제목(subject)

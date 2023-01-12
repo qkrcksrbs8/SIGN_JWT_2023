@@ -1,6 +1,8 @@
 package cg.park.sign_jwt_2023.comm.auth;
 
+import cg.park.sign_jwt_2023.comm.util.JwtProvider;
 import cg.park.sign_jwt_2023.comm.util.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,15 @@ import java.util.HashMap;
 @Service
 public class AuthService {
 
-    public ResponseEntity<Param> token(Auth auth) {
-        // auth 파라미터 체크
-        // 토큰 생성
+    @Autowired
+    JwtProvider jwt;
 
-        return new ResponseEntity<>(new Param(auth), HttpStatus.OK);
+    public ResponseEntity<Param> token(Auth auth) throws Exception{
+        return new ResponseEntity<>(new Param(isAuthCheck(auth) ? "" : jwt.create(auth.getData())), HttpStatus.OK);
+    }
+
+    private boolean isAuthCheck(Auth auth) {
+        return null == auth || "".equals(auth.getData());
     }
 
 }
