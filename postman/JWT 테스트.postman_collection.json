@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "2453a464-9f93-4e93-86f7-e68d18d5629f",
+		"name": "JWT 테스트",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20873921"
+	},
+	"item": [
+		{
+			"name": "토큰생성",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": "localhost:8080/auth/token"
+			},
+			"response": []
+		},
+		{
+			"name": "토큰인증",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQQ0ciLCJpYXQiOjE2NzM1MTAwMTQsImV4cCI6MTY3MzU5NjQxNCwic3ViIjoiYWRtaW4ifQ.e2PRuubM3ZP9rP996w1sUckEsvlEJJo4bN-8KfpkX2I",
+						"type": "text"
+					}
+				],
+				"url": "localhost:8080/auth/token"
+			},
+			"response": []
+		}
+	]
+}
