@@ -18,12 +18,17 @@ public class AuthService {
     @Autowired
     JwtProvider jwt;
 
-    public ResponseEntity<Param> token(Auth auth) throws Exception{
+    public ResponseEntity<Param> token(Auth auth) throws Exception
+    {
         return new ResponseEntity<>(new Param(isAuthCheck(auth) ? "" : jwt.create(auth.getData())), HttpStatus.OK);
     }
 
     private boolean isAuthCheck(Auth auth) {
         return null == auth || "".equals(auth.getData());
+    }
+
+    public ResponseEntity<Param> cert(String token) throws Exception {
+        return new ResponseEntity<>(new Param(null == token ? "" : jwt.parseJwtToken(token)), HttpStatus.OK);
     }
 
 }
