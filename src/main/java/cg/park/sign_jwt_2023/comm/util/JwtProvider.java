@@ -32,10 +32,9 @@ public class JwtProvider {
     }
 
     public Claims parseJwtToken(String token) {
-            token = BearerRemove(token); // Bearer 제거
             return Jwts.parser()
                     .setSigningKey(Base64.getEncoder().encodeToString(secretKey.getBytes()))
-                    .parseClaimsJws(token)
+                    .parseClaimsJws(BearerRemove(token))
                     .getBody();
     }
 
